@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename='stylesheet.css') }}" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+  <p>Name: {{ name }}</p>
+  <form name="user_data">
+
+    <label for="first_name">Имя клиента</label><br>
+    <input type="text" id="first_name"></input><br>
+
+    <label for="phone">Телефон</label><br>
+    <input type="tel" id="phone"></input><br>
+
+    <label for="age">Возраст</label><br>
+    <input type="number" id="age"></input><br>
+
+    <label for="income">Личный доход ($)</label><br>
+    <input type="number" id="income"></input><br>
+
+    <label for="emp_length">Стаж работы</label><br>
+    <input type="number" id="emp_length"></input><br>
+
+    <label for="intent">Цель кредита</label><br>
+    <input type="text" id="intent"></input><br>
+
+    <label for="grade">Кредитный рейтинг</label><br>
+    <input type="text" id="grade"></input><br>
+
+    <label for="loan_percent_income">Процент от дохода на выплаты</label><br>
+    <input type="text" id="loan_percent_income"></input><br>
+
+    <label for="default_on_file	">Дефолты в прошлом</label><br>
+    <input type="text" id="default_on_file	"></input><br>
+
+    <label for="default_on_file	">Величина кредитной истории (лет)</label><br>
+    <input type="number" id="default_on_file	"></input><br>
+
+    <input id="submit" type="button" value="Submit"/>
+
+  </form>
+
+</body>
+</html>
