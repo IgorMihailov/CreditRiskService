@@ -2,14 +2,27 @@
 window.onload = function () {
 
     //получаем идентификатор элемента
-    var btn = document.getElementById('submit');
+    var btn_submit = document.getElementById('submit');
+    var btn_check_phone = document.getElementById('check_phone');
 
-    //вешаем на него событие
-    btn.onclick = function() {
+    btn_check_phone.onclick = async function() {
 
-      start();
+
 
     }
+
+
+    //вешаем на него событие
+    btn_submit.onclick = function() {
+
+      checkphone();
+
+    }
+
+    const checkphone = async function() {
+
+    }
+
 
     const start = async function() {
         const result = await myfunction();
