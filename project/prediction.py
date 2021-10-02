@@ -9,8 +9,6 @@ from flask_restful import Resource, Api, reqparse
 
 app = Flask(__name__)
 api = Api(app)
-#parser = reqparse.RequestParser()
-#parser.add_argument('data')
 
 class HelloWorld(Resource):
 
@@ -28,9 +26,9 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/api/prediction')
 
-@app.route('/')
-def hello():
-    return render_template('index.html', name='Jerry')
+# @app.route('/')
+# def hello():
+#     return render_template('index.html', name='Jerry')
 
 
 
