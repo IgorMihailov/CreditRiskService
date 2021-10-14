@@ -21,57 +21,45 @@
         <div class="field">
           <label class="label" for="phone">Телефон</label>
           <div class="control">
-            <input class="input" type="tel" id="phone"></input>
-            <!--<input class="button" id="check_phone" type="button" value="Check" />-->
+            <input class="input" type="tel" id="phone" value={{phone}}></input>
+
           </div>
         </div>
 
         <div class="field">
           <label class="label" for="age">Возраст</label>
           <div class="control">
-            <input class="input" type="number" id="age"></input>
+            <input class="input" type="number" id="age" value={{age}}></input>
           </div>
         </div>
 
         <div class="field">
           <label class="label" for="income">Личный доход ($)</label>
           <div class="control">
-            <input class="input" type="number" id="income"></input></div>
-        </div>
+            <input class="input" type="number" id="income" value={{income}}></input></div>
+          </div>
 
-        <div class="field">
-          <label class="label" for="emp_length">Стаж работы</label>
-          <div class="control"><input class="input" type="number" id="emp_length"></input></div>
+          <div class="field">
+            <label class="label" for="emp_length">Стаж работы</label>
+            <div class="control"><input class="input" type="number" id="emp_length" value={{emp_length}}></input></div>
+          </div>
+        </div>
+        <div class="column is-6">
+
+          <div class="field">
+            <label class="label" for="default_on_file	">Дефолты в прошлом</label>
+            <div class="control"><input class="input" type="text" id="default_on_file"value={{defaults_in_past}}></input></div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="default_on_file	">Лет кредитной истории</label>
+            <div class="control"><input class="input" type="number" id="hist_length" value={{hist_length}}></input></div>
+          </div>
+
+          <input class="button is-info is-light" id="submit" type="button" value="Submit" />
         </div>
       </div>
-      <div class="column is-6">
+    </form>
+  </div>
 
-        <div class="field">
-          <label class="label" for="intent">Цель кредита</label>
-          <div class="control"><input class="input" type="text" id="intent"></input></div>
-        </div>
-        <div class="field">
-          <label class="label" for="grade">Кредитный рейтинг</label>
-          <div class="control"><input class="input" type="text" id="grade"></input></div>
-        </div>
-        <div class="field">
-          <label class="label" for="loan_percent_income">% дохода на выплаты</label>
-          <div class="control"><input class="input" type="text" id="loan_percent_income"></input></div>
-        </div>
-        <div class="field">
-          <label class="label" for="default_on_file	">Дефолты в прошлом</label>
-          <div class="control"><input class="input" type="text" id="default_on_file	"></input></div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="default_on_file	">Лет кредитной истории</label>
-          <div class="control"><input class="input" type="number" id="default_on_file	"></input></div>
-        </div>
-
-        <input class="button is-info is-light" id="submit" type="button" value="Submit" />
-      </div>
-    </div>
-  </form>
-</div>
-
-{% endblock %}
+  {% endblock %}
