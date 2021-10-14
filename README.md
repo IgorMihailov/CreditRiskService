@@ -1,2 +1,2 @@
 # CreditRiskService
-Service that provide deployment of credit risk prediction ML model
+Service that provides deployment of credit risk prediction ML model
