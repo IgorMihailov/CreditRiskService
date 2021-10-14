@@ -12,4 +12,12 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html',
+    name=current_user.name)
+    #passport=current_user.passport,
+    #phone=current_user.phone,
+    #age=current_user.age,
+    #income=current_user.income,
+    #emp_length=current_user.emp_length,
+    #defaults_in_past=current_user.defaults_in_past,
+    #hist_length=current_user.hist_length)
