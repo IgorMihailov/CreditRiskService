@@ -14,7 +14,7 @@ def index():
 def profile():
     return render_template('profile.html',
     name=current_user.name,
-    passport=current_user.passport,
+    passport=current_user.passport.replace("_", ""),
     phone=current_user.phone,
     age=current_user.age,
     income=current_user.income,
