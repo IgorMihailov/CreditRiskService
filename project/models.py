@@ -1,6 +1,9 @@
 # models.py
 
 from flask_login import UserMixin
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 from . import db
 
 class User(UserMixin, db.Model):
@@ -19,3 +22,44 @@ class User(UserMixin, db.Model):
     emp_length          = db.Column(db.Integer)
     defaults_in_past    = db.Column(db.String(1))
     hist_length         = db.Column(db.Integer)
+
+class ProfileForm(FlaskForm):
+
+    """Profile form."""
+
+    passport = StringField(
+        'Passport',
+        [DataRequired()]
+    )
+
+    phone = StringField(
+        'Phone',
+        [DataRequired()]
+    )
+
+    age = StringField(
+        'Age',
+        [DataRequired()]
+    )
+
+    income = StringField(
+        'Income',
+        [DataRequired()]
+    )
+
+    emp_length = StringField(
+        'Employee Length',
+        [DataRequired()]
+    )
+
+    defaults_in_past = StringField(
+        'Defaults in past',
+        [DataRequired()]
+    )
+
+    hist_length = StringField(
+        'Credit history length',
+        [DataRequired()]
+    )
+
+    submit = SubmitField('Submit')
