@@ -2,7 +2,7 @@
 
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 from . import db
 
@@ -52,10 +52,10 @@ class ProfileForm(FlaskForm):
         [DataRequired()]
     )
 
-    defaults_in_past = StringField(
-        'Defaults in past',
-        [DataRequired()]
-    )
+    defaults_in_past = SelectField('Defaults in past', choices=[
+        ('N', 'No'),
+        ('Y', 'Yes'),
+    ])
 
     hist_length = StringField(
         'Credit history length',

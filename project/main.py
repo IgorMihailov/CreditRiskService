@@ -9,7 +9,6 @@ from .models import ProfileForm
 from .models import User
 from . import db
 
-
 main = Blueprint('main', __name__)
 
 @main.route('/')
@@ -23,7 +22,11 @@ def profile():
     form = ProfileForm(request.form)
 
     # when post
-    if request.method == "POST": #form.validate_on_submit():
+    if request.method == "POST" and form.validate(): #form.validate_on_submit():
+
+        if is_passport_valid(form.passport.data):
+            flash ("Passport is invalid!")
+            return redirect(url_for('main.profile'))
 
         user = User.query.filter_by(email=current_user.email).first()
         user.passport = form.passport.data
@@ -51,3 +54,6 @@ def profile():
     form.hist_length.data=current_user.hist_length
     
     return render_template('profile.html', form=form, name=current_user.name)
+
+def is_passport_valid():
+    return True
