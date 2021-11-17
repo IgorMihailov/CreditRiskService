@@ -8,6 +8,7 @@ from werkzeug.utils import redirect
 from .models import ProfileForm
 from .models import User
 from . import db
+from .validation_service import *
 
 main = Blueprint('main', __name__)
 
@@ -21,11 +22,29 @@ def profile():
 
     form = ProfileForm(request.form)
 
-    # when post
-    if request.method == "POST" and form.validate(): #form.validate_on_submit():
+    # when get
+    if request.method == "GET":
+        if current_user.passport != None:
+            form.passport.data=current_user.passport.replace("_", "")
 
-        if is_passport_valid(form.passport.data):
-            flash ("Passport is invalid!")
+        form.phone.data=current_user.phone
+        form.age.data=current_user.age
+        form.income.data=current_user.income
+        form.emp_length.data=current_user.emp_length
+        form.defaults_in_past.data=current_user.defaults_in_past
+        form.hist_length.data=current_user.hist_length
+
+        return render_template('profile.html', form=form, name=current_user.name)
+
+    # when post
+    if request.method == "POST": #form.validate_on_submit():
+
+        if not check_length(form.passport.data):
+            flash ("Passport must bе 10 numbers!")
+            return redirect(url_for('main.profile'))
+
+        if not is_passport_valid(form.passport.data):
+            flash ("Passport in expired list!")
             return redirect(url_for('main.profile'))
 
         user = User.query.filter_by(email=current_user.email).first()
@@ -41,19 +60,7 @@ def profile():
         flash("Saved successfully!")
         return redirect(url_for('main.profile'))
 
-    # when get
+    return render_template('index.html')
 
-    if current_user.passport != None:
-        form.passport.data=current_user.passport.replace("_", "")
-
-    form.phone.data=current_user.phone
-    form.age.data=current_user.age
-    form.income.data=current_user.income
-    form.emp_length.data=current_user.emp_length
-    form.defaults_in_past.data=current_user.defaults_in_past
-    form.hist_length.data=current_user.hist_length
-    
-    return render_template('profile.html', form=form, name=current_user.name)
-
-def is_passport_valid():
-    return True
+#def is_passport_valid(passport):
+#    return True
