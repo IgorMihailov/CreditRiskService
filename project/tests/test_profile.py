@@ -74,8 +74,31 @@ class TestProfile(TestCase):
     def test_save_profile_data(self):
         self.auth()
         user = User.query.filter_by(email=current_user.email).first()
+        
+        passport = "8614152327"
+        phone = "777-888"
+        age = "20"
+        income = "30000"
+        emp_length = "1"
+        defaults_in_past = "N"
+        hist_length = "0"
 
-        response = self.client.post("/")
+        self.client.get("/profile")
+        response = self.client.post("/profile", data=dict(
+            passport=passport,
+            phone=phone,
+            age=age,
+            income=income,
+            emp_length=emp_length,
+            defaults_in_past=defaults_in_past,
+            hist_length=hist_length
+        ), follow_redirects=False)
+
+        with self.client.session_transaction() as session:
+            flash_message = dict(session['_flashes']).get('error')
+
+        self.assertIsNotNone(flash_message, session['_flashes'])
+        #self.assertEqual(flash_message, expected_flash_message)
         
 
     def auth(self):
