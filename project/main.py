@@ -61,6 +61,3 @@ def profile():
         return redirect(url_for('main.profile'))
 
     return render_template('index.html')
-
-#def is_passport_valid(passport):
-#    return True

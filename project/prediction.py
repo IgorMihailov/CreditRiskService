@@ -4,34 +4,19 @@ import pickle
 import pandas as pd
 import numpy as np
 
-from flask import Flask, jsonify, request, render_template
-from flask_restful import Resource, Api, reqparse
+def predict(data_dict):
 
-app = Flask(__name__)
-api = Api(app)
-
-class HelloWorld(Resource):
-
-  def post(self):
-
-    json_data = request.get_json()
-    data = pd.DataFrame(json_data, index = [0])
+    data = pd.DataFrame([data_dict])#, index = [0])
     data = pd.get_dummies(data, columns=['person_home_ownership', 'loan_intent', 'loan_grade', 'cb_person_default_on_file'])
 
-    model = pickle.load(open('models/model.bin', 'rb'))
+    model = pickle.load(open('ml_models/model.bin', 'rb'))
     predictions = model.predict(data).tolist()
 
-    return jsonify({'prediction': predictions})
+    return predictions[0]
 
-
-api.add_resource(HelloWorld, '/api/prediction')
-
-# @app.route('/')
-# def hello():
-#     return render_template('index.html', name='Jerry')
-
-
-
+    # @app.route('/')
+    # def hello():
+    #     return render_template('index.html', name='Jerry')
 
     #loaded_model = pickle.load(open('models/model.bin', 'rb'))
     #####

@@ -2,7 +2,9 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager 
+from flask_login import LoginManager
+
+#app = Flask(__name__)
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -12,6 +14,7 @@ def create_app():
 
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
 
