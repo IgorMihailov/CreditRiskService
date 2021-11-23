@@ -7,9 +7,9 @@ from werkzeug.security import generate_password_hash
 from ..models import User
 from .. import db
 from .. import auth
+from .. import loan_service
 
-class TestProfile(TestCase):
-
+class TestLoan(TestCase):
     render_templates = False
 
     def create_app(self):
@@ -47,38 +47,22 @@ class TestProfile(TestCase):
         db.session.remove()
         db.drop_all()
 
-    def test_get_profile_unauth(self):
-        response = self.client.get("/profile")
-        self.assertMessageFlashed("Please check your login details and try again.", category='error')
+    # Each test method starts with the keyword test_
+    def test_create_loan(self):
 
-    def test_get_profile_unauth(self):
-        expected_flash_message = 'Please log in to access this page.'
-        response = self.client.get("/profile")
+        loan_data = []
+        loan_name = "Student loan"
+        loan_amount = 10000
+        loan_percent = 10
 
-        with self.client.session_transaction() as session:
-            flash_message = dict(session['_flashes']).get('message')
-
-        self.assertIsNotNone(flash_message, session['_flashes'])
-        self.assertEqual(flash_message, expected_flash_message)
-
-    def test_get_profile_auth(self):
-        self.auth()
-        response = self.client.get("/profile")
-        self.assert_redirects(response, "/login?next=%2Fprofile")
+        loan_data.append(loan_name)
+        loan_data.append(loan_amount)
+        loan_data.append(loan_percen)
 
 
-    def auth(self):
-        email = 'email'
-        password = 'password'
-        name = 'user'
+        new_loan = loan_service.create_loan()
 
-        new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
-
-        # add the new user to the database
-        db.session.add(new_user)
-        db.session.commit()
-
-        #login_user(new_user)
+        self.assertIsNotNone(new_loan.id)
 
 # Executing the tests in the above test case class
 if __name__ == "__main__":
