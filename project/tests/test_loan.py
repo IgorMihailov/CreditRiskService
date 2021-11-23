@@ -57,10 +57,9 @@ class TestLoan(TestCase):
 
         loan_data.append(loan_name)
         loan_data.append(loan_amount)
-        loan_data.append(loan_percen)
+        loan_data.append(loan_percent)
 
-
-        new_loan = loan_service.create_loan()
+        new_loan = loan_service.create_loan(loan_data)
 
         self.assertIsNotNone(new_loan.id)
 

@@ -1,13 +1,13 @@
 from . import db
 
 def create_loan(loan_data):
-  return none
+  return None
 
 def delete_loan(loan_id):
-    return none
+    return None
 
 def update_loan(loan_data, loan_id):
-    return none
+    return None
 
 def approve_loan(loan_id, user_id):
-  return none
+  return None
