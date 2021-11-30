@@ -40,11 +40,11 @@ def profile():
     if request.method == "POST": #form.validate_on_submit():
 
         if not check_length(form.passport.data):
-            flash ("Passport must bе 10 numbers!")
+            flash ("Passport must bе 10 numbers!", 'error')
             return redirect(url_for('main.profile'))
 
         if not is_passport_valid(form.passport.data):
-            flash ("Passport in expired list!")
+            flash ("Passport in expired list!", 'error')
             return redirect(url_for('main.profile'))
 
         user = User.query.filter_by(email=current_user.email).first()
@@ -57,7 +57,7 @@ def profile():
         user.hist_length = form.hist_length.data
 
         db.session.commit()
-        flash("Saved successfully!")
+        flash("Saved successfully!", 'message')
         return redirect(url_for('main.profile'))
 
     return render_template('index.html')
