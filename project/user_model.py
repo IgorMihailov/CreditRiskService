@@ -15,6 +15,8 @@ class User(UserMixin, db.Model):
     name                = db.Column(db.String(1000))
     passport            = db.Column(db.String(11))
     phone               = db.Column(db.String(15))
+    
+    loans               = db.relationship('Loan', backref='user', lazy=True)
 
     # data for prediction
     age                 = db.Column(db.Integer)
