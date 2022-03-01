@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_testing import TestCase
 from werkzeug.security import generate_password_hash
-from ..models import User
+from ..user_model import User
 from .. import db
 from .. import auth
 from .. import prediction

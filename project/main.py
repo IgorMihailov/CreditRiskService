@@ -5,8 +5,8 @@ from flask import Blueprint, render_template, request, flash
 from flask.helpers import url_for
 from flask_login import login_required, current_user
 from werkzeug.utils import redirect
-from .models import ProfileForm
-from .models import User
+from .user_model import ProfileForm
+from .user_model import User
 from . import db
 from .validation_service import *
 

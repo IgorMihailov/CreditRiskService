@@ -1,4 +1,4 @@
-# models.py
+# user_model.py
 
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
