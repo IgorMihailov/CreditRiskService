@@ -1,4 +1,6 @@
 # pytest --cov=project --cov-report=html project/tests/test_integration.py
+# docker run -it --rm -p 8000:80 --name expiredpassportchecker skivsoft/expired-passport-checker
+
 import unittest
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
