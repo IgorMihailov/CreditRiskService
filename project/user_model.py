@@ -8,6 +8,7 @@ from . import db
 
 class User(UserMixin, db.Model):
 
+    __tablename__ = 'users'
     # common data
     id                  = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
     email               = db.Column(db.String(100), unique=True)
@@ -16,7 +17,7 @@ class User(UserMixin, db.Model):
     passport            = db.Column(db.String(11))
     phone               = db.Column(db.String(15))
     
-    loans               = db.relationship('Loan', backref='user', lazy=True)
+    loans               = db.relationship("Loan", back_populates="user", lazy=True)
 
     # data for prediction
     age                 = db.Column(db.Integer)

@@ -1,0 +1,35 @@
+<!-- templates/loans.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  List of available loans
+</h1>
+
+<div class="container">
+    <table>
+        <tr>
+            <td>Intent</td>
+            <td>Amount</td>
+            <td>Rate (%)</td>
+        </tr>
+        <tr>
+            <td>Education</td>
+            <td>Personal</td>
+            <td>Medical</td>
+        </tr>
+        <tr>
+            <td>10000</td>
+            <td>20000</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>15</td>
+            <td>8</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

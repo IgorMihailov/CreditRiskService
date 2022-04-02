@@ -23,7 +23,7 @@ def create_app():
     login_manager.init_app(app)
 
     from .user_model import User
-
+    from .loan_model import Loan
     @login_manager.user_loader
     def load_user(user_id):
         # since the user_id is just the primary key of our user table, use it in the query for the user
@@ -37,4 +37,9 @@ def create_app():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from .loan_controller import loan as loan_blueprint
+    app.register_blueprint(loan_blueprint)
+
+    db.drop_all(app=app)
+    db.create_all(app=app)
     return app

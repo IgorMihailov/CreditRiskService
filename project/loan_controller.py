@@ -6,6 +6,6 @@ from . import db
 
 loan = Blueprint('loan', __name__)
 
-@loan.route('/add_loan')
-def login():
-    return render_template('index.html')
+@loan.route('/loans_list')
+def loans():
+    return render_template('loans.html')
