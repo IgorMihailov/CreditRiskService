@@ -1,5 +1,5 @@
 # os to handle saving/deleting images
-import os
+import sys
 import pickle
 import pandas as pd
 import numpy as np
@@ -11,5 +11,6 @@ def predict(data_dict):
 
     model = pickle.load(open('project/scoring/model.bin', 'rb'))
     predictions = model.predict(data).tolist()
-
+    
+    print(data.head(1), file=sys.stdout)
     return predictions[0]

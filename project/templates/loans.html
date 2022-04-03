@@ -10,26 +10,31 @@
 <div class="container">
     <table>
         <tr>
-            <td>Intent</td>
-            <td>Amount</td>
-            <td>Rate (%)</td>
+            <th>Intent</th>
+            <th>Amount</th>
+            <th>Rate (%)</th>
+            <th></th>
         </tr>
         <tr>
             <td>Education</td>
-            <td>Personal</td>
-            <td>Medical</td>
-        </tr>
-        <tr>
             <td>10000</td>
-            <td>20000</td>
-            <td>15000</td>
+            <td>10</td>   
+            <td><button class="button is-info" id="loan1" onclick="addLoan(1)">Get</button></td>                   
         </tr>
         <tr>
-            <td>10</td>
+            <td>Personal</td>
+            <td>20000</td>
             <td>15</td>
+            <td><button class="button is-info" id="loan2" onclick="addLoan(2)">Get</button></td>            
+        </tr>
+        <tr>
+            <td>Medical</td>
+            <td>15000</td>
             <td>8</td>
+            <td><button class="button is-info" id="loan3" onclick="addLoan(3)">Get</button></td>
         </tr>
     </table>
 </div>
+<script type="text/javascript" src="../static/loans.js"></script>
 
 {% endblock %}

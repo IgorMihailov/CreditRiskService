@@ -39,13 +39,13 @@ def profile():
     # when post
     if request.method == "POST": #form.validate_on_submit():
 
-        if not check_length(form.passport.data):
-            flash ("Passport must bе 10 numbers!", 'error')
-            return redirect(url_for('main.profile'))
+        # if not check_length(form.passport.data):
+        #     flash ("Passport must bе 10 numbers!", 'error')
+        #     return redirect(url_for('main.profile'))
 
-        if not is_passport_valid(form.passport.data):
-            flash ("Passport in expired list!", 'error')
-            return redirect(url_for('main.profile'))
+        # if not is_passport_valid(form.passport.data):
+        #     flash ("Passport in expired list!", 'error')
+        #     return redirect(url_for('main.profile'))
 
         user = User.query.filter_by(email=current_user.email).first()
         user.passport = form.passport.data
