@@ -4,6 +4,13 @@ from . import db
 import sys
 from flask_login import current_user
 from .loan_model import Loan
+from datetime import date
+
+def get_curr_user_loans():
+  user = current_user
+  print (user.id, file=sys.stdout)
+  loans = Loan.query.filter_by(user_id=user.id).all()
+  return loans
 
 def create_loan(loan_data):
     
@@ -16,7 +23,7 @@ def create_loan(loan_data):
     intent = loan_data['intent']
     grade = loan_data['grade']
 
-    new_loan = Loan(user=user, user_id=user.id, amount=amount, rate=rate, intent=intent, grade=grade)
+    new_loan = Loan(user=user, user_id=user.id, amount=amount, rate=rate, intent=intent, grade=grade, start_date=date.today())
     db.session.add(new_loan)
     db.session.commit()
     

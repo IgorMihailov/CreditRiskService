@@ -33,7 +33,12 @@
                             {% endif %}
                             {% if current_user.is_authenticated %}
                             <a href="{{ url_for('loan.loans') }}" class="navbar-item">
-                                Loans
+                                Get loan
+                            </a>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('loan.user_loans') }}" class="navbar-item">
+                                Your loans
                             </a>
                             {% endif %}
                             {% if not current_user.is_authenticated %}

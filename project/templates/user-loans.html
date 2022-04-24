@@ -1,0 +1,32 @@
+<!-- templates/loans.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  List of your loans
+</h1>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Intent</th>
+            <th>Amount</th>
+            <th>Rate (%)</th>
+            <th>Start date</th>
+        </tr>
+        {% if loans %}
+        {% for loan in loans %}
+        <tr>
+        <td>{{ loan.intent }}</td>
+        <td>{{ loan.amount }}</td>
+        <td>{{ loan.rate }}</td>
+        <td>{{ loan.start_date }}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+<script type="text/javascript" src="../static/loans.js"></script>
+
+{% endblock %}

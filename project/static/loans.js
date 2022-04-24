@@ -5,21 +5,21 @@ let loans = [
     amount: 10000,
     rate: 10,
     intent: 'EDUCATION',
-    grade: 'B'
+    grade: 'A'
   },
 
   {
     amount: 20000,
     rate: 15,
     intent: 'PERSONAL',
-    grade: 'B'
+    grade: 'A'
   },
 
   { 
     amount: 15000,
     rate: 8,
     intent: 'MEDICAL',
-    grade: 'B'
+    grade: 'A'
   }
 ]
 

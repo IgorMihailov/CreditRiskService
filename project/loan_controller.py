@@ -12,17 +12,20 @@ loan = Blueprint('loan', __name__)
 @loan.route('/loans_list')
 @login_required
 def loans():
-    return render_template('loans.html')
+    return render_template('new-loans.html')
+
+@loan.route('/user_loans_list')
+@login_required
+def user_loans():
+    loans = loan_service.get_curr_user_loans()
+    return render_template('user-loans.html', loans=loans)
 
 @loan.route('/add_loan', methods=['POST'])
 @login_required
 def add_loan():
     loan_data = request.get_json()
-    print(loan_data, file=sys.stdout)
     result = loan_service.create_loan(loan_data)
-    print(result, file=sys.stdout)
 
     response = make_response(result, 200)
     response.mimetype = "text/plain"
     return response
-    #return result, 200
