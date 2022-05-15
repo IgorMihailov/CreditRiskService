@@ -46,7 +46,7 @@ class ProfileForm(FlaskForm):
     )
 
     income = StringField(
-        'Income',
+        'Annual Income ($)',
         [DataRequired()]
     )
 

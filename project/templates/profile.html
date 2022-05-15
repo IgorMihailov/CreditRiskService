@@ -22,12 +22,12 @@
 
     <div class="columns">
       <div class="column is-6">
-        <div class="field">
+        <!-- <div class="field">
           {{ form.passport.label() }}
           <div class="control">
             {{ form.passport(class="input") }}
           </div>
-        </div>
+        </div> -->
 
         <div class="field">
           {{ form.phone.label() }}
@@ -50,15 +50,15 @@
           </div>
         </div>
 
+      </div>
+      <div class="column is-6">
+
         <div class="field">
           {{ form.emp_length.label() }}
           <div class="control">
             {{ form.emp_length(class="input") }}
           </div>
         </div>
-
-      </div>
-      <div class="column is-6">
 
         <div class="field">
           {{ form.defaults_in_past.label() }}
@@ -73,10 +73,9 @@
             {{ form.hist_length(class="input") }}
           </div>
         </div>
-
-        {{ form.submit(class="button")}}
       </div>
     </div>
+    {{ form.submit(class="button")}}
   </form>
 </div>
 
